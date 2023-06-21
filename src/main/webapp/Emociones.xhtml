@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:tabMenu activeIndex="#{param.i}">
+                <p:menuitem value="Sentimientos" outcome="Emociones.xhtml" icon="pi pi-fw pi-home">
+                    <f:param name="i" value="0"/>
+                </p:menuitem>
+                <p:menuitem value="DNI" outcome="DNI.xhtml" icon="pi pi-fw pi-box">
+                    <f:param name="i" value="1"/>
+                </p:menuitem>
+                <p:menuitem value="chatGPT" outcome="chatGPT.xhtml" icon="pi pi-fw pi-pencil">
+                    <f:param name="i" value="2"/>
+                </p:menuitem>
+                <p:menuitem value="libreria" outcome="primero.xhtml" icon="pi pi-fw pi-file">
+                    <f:param name="i" value="3"/>
+                </p:menuitem>
+                <p:menuitem value="Settings" outcome="Emociones.xhtml" icon="pi pi-fw pi-cog">
+                    <f:param name="i" value="4"/>
+                </p:menuitem>
+            </p:tabMenu>
+            <h3 style="text-align: center">ABUSO</h3>
+            <div class="ui-g-12">
+                <div class="ui-g-4">  
+                    <p:panelGrid columns="1">
+                        <p:commandButton value="Ingresar texto" update="resultadoAbuso abusive hate_speech neither textFlotante1 dataFlotante1" action="#{abusoC.generar()}" />
+                        <p:inputTextarea value="#{abusoC.model.texto}" id="resultadoAbuso" rows="5" cols="30" />
+                    </p:panelGrid>
+                </div>
+                <div class="ui-g-4">
+                    <p:panelGrid columns="2">
+                        <p:outputLabel style="font-weight: bold" value="#{abusoC.textoFlotante}" id="textFlotante1"></p:outputLabel>
+                        <p:outputLabel style="font-weight: bold" value="#{abusoC.dataFlotante *100}" id="dataFlotante1"> %</p:outputLabel>
+                    </p:panelGrid>
+                </div>
+                <div class="ui-g-4">
+                    <p:panelGrid columns="2">
+                        <p:outputLabel style="font-weight: bold">abusivo</p:outputLabel>
+                        <p:outputLabel id="abusive" value="#{abusoC.model.abusive *100}"> %</p:outputLabel>
+                        <p:outputLabel style="font-weight: bold">Discurso de odio</p:outputLabel>
+                        <p:outputLabel id="hate_speech" value="#{abusoC.model.hate_speech *100}"> %</p:outputLabel>
+                        <p:outputLabel style="font-weight: bold">Ni uno ni otro</p:outputLabel>
+                        <p:outputLabel id="neither" value="#{abusoC.model.neither *100}"> %</p:outputLabel>
+                    </p:panelGrid>
+                </div>
+            </div>
+            <h3 style="text-align: center">SARCASMO</h3>
+            <div class="ui-g-12">
+                <div class="ui-g-4">  
+                    <p:panelGrid columns="1">
+                        <p:commandButton value="Ingresar texto" update="resultadoSarcasmo sarcastico noSarcastico textFlotante2 dataFlotante2" action="#{sarcasmoC.generar()}" />
+                        <p:inputTextarea value="#{sarcasmoC.model.texto}" id="resultadoSarcasmo" rows="5" cols="30" />
+                    </p:panelGrid>
+                </div>
+                <div class="ui-g-4">
+                    <p:panelGrid columns="2">
+                        <p:outputLabel style="font-weight: bold" value="#{sarcasmoC.textoFlotante}" id="textFlotante2"></p:outputLabel>
+                        <p:outputLabel style="font-weight: bold" value="#{sarcasmoC.dataFlotante *100}" id="dataFlotante2"> %</p:outputLabel>
+                    </p:panelGrid>
+                </div>
+                <div class="ui-g-4">
+                    <p:panelGrid columns="2">
+                        <p:outputLabel style="font-weight: bold">sarcastico</p:outputLabel>
+                        <p:outputLabel id="sarcastico" value="#{sarcasmoC.model.sarcastico *100}"> %</p:outputLabel>
+                        <p:outputLabel style="font-weight: bold">No sarcastico</p:outputLabel>
+                        <p:outputLabel id="noSarcastico" value="#{sarcasmoC.model.noSarcastico *100}"> %</p:outputLabel>
+                    </p:panelGrid>
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <h3 style="text-align: center">EMOCIONES</h3>
+                <div class="ui-g-4">  
+                    <p:panelGrid columns="1">
+                        <p:commandButton value="Ingresar texto" update="resultadoEmociones feliz miedo triste emocionado molesto aburrido textFlotante3 dataFlotante3" action="#{TextoC.generar()}" />
+                        <p:inputTextarea value="#{TextoC.model.texto}" id="resultadoEmociones" rows="5" cols="30" />
+                    </p:panelGrid>
+                </div>
+                <div class="ui-g-4">
+                    <p:panelGrid columns="2">
+                        <p:outputLabel style="font-weight: bold" value="#{TextoC.textoFlotante}" id="textFlotante3"></p:outputLabel>
+                        <p:outputLabel style="font-weight: bold" value="#{TextoC.dataFlotante *100}" id="dataFlotante3"> %</p:outputLabel>
+                    </p:panelGrid>
+                </div>
+                <div class="ui-g-4">
+                    <p:panelGrid columns="2">
+                        <p:outputLabel style="font-weight: bold">feliz</p:outputLabel>
+                        <p:outputLabel id="feliz" value="#{TextoC.model.happy *100}"> %</p:outputLabel>
+                        <p:outputLabel style="font-weight: bold">miedo</p:outputLabel>
+                        <p:outputLabel id="miedo" value="#{TextoC.model.fear *100}"> %</p:outputLabel>
+                        <p:outputLabel style="font-weight: bold">triste</p:outputLabel>
+                        <p:outputLabel id="triste" value="#{TextoC.model.sad *100}"> %</p:outputLabel>
+                        <p:outputLabel style="font-weight: bold">emocionado</p:outputLabel>
+                        <p:outputLabel id="emocionado" value="#{TextoC.model.excited *100}"> %</p:outputLabel>
+                        <p:outputLabel style="font-weight: bold">molesto</p:outputLabel>
+                        <p:outputLabel id="molesto" value="#{TextoC.model.angry *100}"> %</p:outputLabel>
+                        <p:outputLabel style="font-weight: bold">aburrido</p:outputLabel>
+                        <p:outputLabel id="aburrido" value="#{TextoC.model.bored *100}"> %</p:outputLabel>
+                    </p:panelGrid>
+                </div>
+            </div>
+        </h:form>
+    </h:body>
+</html>
+
