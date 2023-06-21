@@ -1,0 +1,10 @@
+# Agregar su credenciales de mongo atlas
+
+spring:
+  data:
+    mongodb:
+      database: productos
+      uri: mongodb+srv://azulciverclocmen:Quilmana123@productos.lne9n0t.mongodb.net/
+
+server:
+  port: 8081
