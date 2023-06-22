@@ -54,4 +54,11 @@ public class model {
     //chat gpt
     private String into;
     private String respuesta;
+    
+    //microservicio
+    private String micro;
+    private String idMicro;
+    private String nameMicro;
+    private String cantidadMicro;
+    private String precioMicro;
 }

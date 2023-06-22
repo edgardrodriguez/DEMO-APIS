@@ -7,7 +7,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:fn="http://java.sun.com/jsp/jstl/functions">
     <h:head>
-        <title>DNI</title>
+        <title>Microservicio</title>
     </h:head>
     <h:body>
         <h:form>
@@ -28,25 +28,23 @@
                     <f:param name="i" value="4"/>
                 </p:menuitem>
             </p:tabMenu>
-            <h3 style="text-align: center">DNI</h3>
+            <h3 style="text-align: center">MICROSERVER</h3>
             <div class="ui-g-4">  
                 <p:panelGrid columns="1">
-                    <p:commandButton value="Ingresar DNI" update="dni numero nombre_completo nombres apellido_paterno apellido_materno" action="#{dniC.generar()}" />
-                    <p:inputText value="#{dniC.model.DNI}" id="dni" maxlength="8"><p:keyFilter regEx="/[0-9]/"/></p:inputText>
+                    <p:commandButton value="Ingresar ID" update="id idMicro nombre cantidad precio" action="#{microserverC.generar()}" />
+                    <p:inputText value="#{microserverC.model.micro}" id="id" ></p:inputText>
                 </p:panelGrid>
             </div>
             <div class="ui-g-4">
                 <p:panelGrid columns="2">
-                    <p:outputLabel style="font-weight: bold">NUMERO</p:outputLabel>
-                    <p:outputLabel id="numero" value="#{dniC.model.numero}"></p:outputLabel>
-                    <p:outputLabel style="font-weight: bold">NOMBRE COMPLETO</p:outputLabel>
-                    <p:outputLabel id="nombre_completo" value="#{dniC.model.nombre_completo}"></p:outputLabel>
-                    <p:outputLabel style="font-weight: bold">NOMBRES</p:outputLabel>
-                    <p:outputLabel id="nombres" value="#{dniC.model.nombres}"></p:outputLabel>
-                    <p:outputLabel style="font-weight: bold">APELLIDO PATERNO</p:outputLabel>
-                    <p:outputLabel id="apellido_paterno" value="#{dniC.model.apellido_paterno}"></p:outputLabel>
-                    <p:outputLabel style="font-weight: bold">APELLIDO MATERNO</p:outputLabel>
-                    <p:outputLabel id="apellido_materno" value="#{dniC.model.apellido_materno}"></p:outputLabel>
+                    <p:outputLabel style="font-weight: bold">ID</p:outputLabel>
+                    <p:outputLabel id="idMicro" value="#{microserverC.model.idMicro}"></p:outputLabel>
+                    <p:outputLabel style="font-weight: bold">NOMBRE</p:outputLabel>
+                    <p:outputLabel id="nombre" value="#{microserverC.model.nameMicro}"></p:outputLabel>
+                    <p:outputLabel style="font-weight: bold">CANTIDAD</p:outputLabel>
+                    <p:outputLabel id="cantidad" value="#{microserverC.model.cantidadMicro}"></p:outputLabel>
+                    <p:outputLabel style="font-weight: bold">PRECIO</p:outputLabel>
+                    <p:outputLabel id="precio" value="#{microserverC.model.precioMicro}"></p:outputLabel>
                 </p:panelGrid>
             </div>
         </h:form>
